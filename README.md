@@ -1,2 +1,2 @@
-# QuizStudyApp
+# Quiz-Study-WebApplication
 Quiz Study helps you build quiz, improve study habits and is shareable to others.
