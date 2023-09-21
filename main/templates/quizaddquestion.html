@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Create Quiz{% endblock %}
+{% load crispy_forms_tags %}
+{% block page %}
+<div class="container mt-4">
+<h4>Create Question</h4>
+{% if user.is_authenticated %}
+  <form method="POST">
+    {% csrf_token %}
+    {{form|crispy}}
+    <br>
+    <button class="btn btn-success" type="submit">Submit</button>
+  </form>
+  <br>
+</div>
+<script>
+  var q = "{{ user.quiz.id }}";
+  document.getElementById("question").id = q;
+</script>
+{% endif %}
+{% endblock %}

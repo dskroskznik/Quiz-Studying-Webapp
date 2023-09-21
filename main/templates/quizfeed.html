@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block title %}Quiz Feed{% endblock %}
+{% block page %}
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-title"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button btn-sm" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a class="btn btn-primary" href="{% url 'quiz' quizmodel.id %}">Start Quiz</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mx-auto mt-1">
+  <br>
+  <div class="container-fluid">
+    <span>
+      <h1>{{ quizmodel.name }} <h6>by, <i>{{ quizmodel.author }}</i></h6></h1>
+      <il><h1><i class="bi bi-hand-thumbs-up"></i><b>{{ quizmodel.total_likes }}</b></h1></il>
+      <button data-bs-target="#exampleModal" data-bs-toggle="modal" data-time="{{quizmodel.timelimit}}"
+      data-questions="{{quizmodel.questions}}" data-name="{{quizmodel.name}}" data-id="{{quizmodel.id}}" id="btn"
+      style="justify-content: center; margin: 0.15rem;" class="btn btn-sm btn-success modal-button">Attempt Quiz</button>
+    </span>
+  </div>
+  <hr>
+  {% if not quizmodel.comments.all%}
+    No Comments Yet...
+    <br><br>
+  {% else %} 
+    {% for x in quizmodel.comments.all %}
+      <strong>{{ x.name }}</strong> 
+      - <i><small>{{ x.date }}</small></i>
+      <br><br>
+      <span style="margin-left: 1.0rem;">
+        "{{ x.body }}"
+      </span> 
+      <hr>
+    {% endfor %} 
+  {% endif %}
+  <a class="btn btn-info" href='quizaddcomments/{{quiz.pk}}'>Add Comment</a>
+  <a class="btn btn-info" href='/'>Go Home</a>
+  
+{% endblock %}
+{% block js %}
+<script>
+  const modalBtns = [...document.getElementsByClassName('modal-button')]
+  const modalBody = document.getElementById('modal-body')
+  const modaltitle = document.getElementById('modal-title')
+  const startQuiz = document.getElementById('start-quiz')
+
+  const url = window.location.href
+
+  modalBtns.forEach(modalBtn => modalBtn.addEventListener('click', () => {
+    const id = modalBtn.getAttribute('data-id')
+    const name = modalBtn.getAttribute('data-name')
+    const numberOfQuestions = modalBtn.getAttribute('data-questions')
+    const time = modalBtn.getAttribute('data-time')
+
+    modaltitle.innerHTML = `${name}`
+
+    modalBody.innerHTML = `
+    The ${name} consists of ${numberOfQuestions} questions. You have ${time} seconds to complete ${numberOfQuestions} questions. After completing the questions you can click submit to get your score.<br>
+          Good Luck!.
+    `
+    startQuiz.addEventListener('click', () => {
+      window.location.href = url + id
+    });
+  }));
+</script>
+{% endblock %}

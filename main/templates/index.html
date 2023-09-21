@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block css %} 
+<style>
+  .head1 {
+    color: #3070fb;
+    font-size: 2rem;
+    font-weight: bold;
+    height: 50px;
+  }
+
+  head2 {
+    color: #7cbef5;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  .card {
+    background: #adeafd;
+    border: 1px solid #020149;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0rem;
+  }
+
+</style>
+{% endblock %}
+{% block page %}
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-title"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button btn-sm" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button btn-sm" id="start-quiz" class="btn btn-primary">Start Quiz</button>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br><br>
+
+<div class="container mx-auto mt-2">
+  <div class="row">
+  {% for quiz in quizzes %}
+    <div class="col-md-4">
+      <div class="card" style="text-align: center; width: 21rem;"><strong>@{{ quiz.author }}</strong></div>
+      <div class="card" style="width: 21rem;">
+        <div class="card-body flex-row justify-content-between">
+        <h3 class="card-title" style="text-align: center;">{{ quiz.name }}</h3>
+        <br>
+          <p>{{ quiz.descriptor }}</p>
+          <p>Time Limit: {{ quiz.timelimit }} second(s)</p>
+        <br>
+          <button data-bs-target="#exampleModal" data-bs-toggle="modal" data-time="{{quiz.timelimit}}"
+            data-questions="{{quiz.questions}}" data-name="{{quiz.name}}" data-id="{{quiz.id}}" id="btn"
+            style="justify-content: center; margin: 0.15rem;" class="btn btn-md btn-success modal-button">Attempt Quiz</button>
+          <a class="btn btn-secondary btn-md" href="{% url 'quizfeed' quiz.pk %}">Feed <i class="bi bi-chat-dots"></i></a>
+        {% if user.is_superuser %}
+        <br>
+        {% csrf_token %}
+          <form method="POST">
+            {% csrf_token %}
+            <a class="btn btn-primary btn-sm" href="{% url 'quizedits' quiz.pk %}">Edit</a>
+            <button type="submit" class="btn btn-danger btn-sm" name ="quizdelete" value="{{ quiz.id }}">Delete</button>
+          </form>
+        {% if user == quiz.author %}
+        <br>
+        {% csrf_token %}
+          <form method="POST">
+            {% csrf_token %}
+            <a class="btn btn-primary btn-sm" href="{% url 'quizedits' quiz.pk %}">Edit</a>
+            <button type="submit" class="btn btn-danger btn-sm" name ="quizdelete" value="{{ quiz.id }}">Delete</button>
+          </form>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+    <div class="card" style="text-align: center; width: 21rem;">
+      <form action="{% url 'quizlikes' quiz.pk %}" method="POST">{% csrf_token %}
+        {% if user.is_authenticated %}
+        <button class="btn btn-sm" type="submit" name="quizlikes" value="{{ quiz.id }} "><h3><i class="bi bi-hand-thumbs-up"></i><b>{{ quiz.total_likes }}</b></h3></button>
+        {% else %}
+        <h3><i class="bi bi-hand-thumbs-up"></i><b>{{ quiz.total_likes }}</b></h3></button>
+        {% endif %}
+      </form> 
+    </div>
+  </div>
+  {% empty %}
+  <p>No quizzes have been created? Click "Create A Quiz!"</p>
+  {% endfor %}
+  </div>
+</div>
+<hr>
+<div class="container mx-auto mt-2">
+  <div class="row">
+    {% if user.is_authenticated %}
+    <br>
+    <a class="btn btn-warning" href="/quizcreate/">Create A Quiz</a>
+    <br>
+    <button class="btn"><a href="/logout/">Logout</a></button>
+    {% else %}
+    <br>
+    <button class="btn"><a href="/login/">Login</a></button>
+    <br>
+    <button class="btn"><a href="/register/">Create Account</a></button>
+    <br>
+    <a class="btn btn-warning" href="/quizcreate/">Create A Quiz</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
+{% block js %}
+<script>
+  const modalBtns = [...document.getElementsByClassName('modal-button')]
+  const modalBody = document.getElementById('modal-body')
+  const modaltitle = document.getElementById('modal-title')
+  const startQuiz = document.getElementById('start-quiz')
+
+  const url = window.location.href
+
+  modalBtns.forEach(modalBtn => modalBtn.addEventListener('click', () => {
+    const id = modalBtn.getAttribute('data-id')
+    const name = modalBtn.getAttribute('data-name')
+    const numberOfQuestions = modalBtn.getAttribute('data-questions')
+    const time = modalBtn.getAttribute('data-time')
+
+    modaltitle.innerHTML = `${name}`
+
+    modalBody.innerHTML = `
+    The ${name} consists of ${numberOfQuestions} question(s). You have ${time} seconds to complete ${numberOfQuestions} questions. After completing the questions you can click submit to get your score.<br>
+          Good Luck!.
+    `
+    startQuiz.addEventListener('click', () => {
+      window.location.href = url + id
+    });
+  }));
+</script>
+{% endblock %}

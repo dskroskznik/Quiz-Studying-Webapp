@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Create Quiz{% endblock %}
+{% load crispy_forms_tags %}
+{% block page %}
+<div class="container mt-4 form-group">
+  <form action="{% url 'quizcreate' %}" method="POST">
+    {% csrf_token %}
+    {{form|crispy}}
+    <br>
+    <button class="btn btn-info" type="submit" href="/quizquestions">Create Questions</button>
+   </form>
+</div>
+
+{% endblock %}
