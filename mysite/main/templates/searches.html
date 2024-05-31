@@ -49,9 +49,9 @@
     <center><h3>Search for Quizzes or Create One</h3></center>
     <hr>
   {% else %}
-    {% for quiz in quizsearch %}
     <center><h3>Search Results for "{{ search }}"</h3></center>
-    <hr>
+    <br>
+    {% for quiz in quizsearch %}
     <div class="col-md-4">
       <div class="card" style="text-align: center; width: 21rem;"><strong>@{{ quiz.author }}</strong></div>
       <div class="card" style="width: 21rem;">
@@ -87,9 +87,14 @@
     </div>
     <div class="card" style="text-align: center; width: 21rem;">
       <form action="{% url 'quizlikes' quiz.pk %}" method="POST">{% csrf_token %}
-        <button class="btn btn-sm" type="submit" name="quizlike" value="{{ quiz.id }} "><h3><i class="bi bi-hand-thumbs-up"></i></h3></button>
+        {% if user.is_authenticated %}
+        <button class="btn btn-sm" type="submit" name="quizlikes" value="{{ quiz.id }} "><h3><i class="bi bi-hand-thumbs-up"></i><b>{{ quiz.total_likes }}</b></h3></button>
+        {% else %}
+        <h3><i class="bi bi-hand-thumbs-up"></i><b>{{ quiz.total_likes }}</b></h3></button>
+        {% endif %}
       </form> 
     </div>
+    <br>
   </div>
   {% empty %}
   <p>No quizzes have been created? Click "Create A Quiz!"</p>
