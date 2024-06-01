@@ -1,27 +1,26 @@
 {% extends 'base.html' %}
 {% block title %}Searches{% endblock %}
-{% block css %} 
+{% block css %}
 <style>
   .head1 {
-    color: #3070fb;
-    font-size: 2rem;
+    color: #298dff;
+    font-size: 2.1rem;
     font-weight: bold;
     height: 50px;
   }
 
-  head2 {
-    color: #7cbef5;
-    font-size: 2rem;
+  .head2 {
+    color: #c9e7ff;
+    font-size: 1.8rem;
     font-weight: bold;
   }
 
   .card {
-    background: #adeafd;
-    border: 1px solid #020149;
+    background: #f5fdff;
+    border: 1.2px solid #0044ff;
     color: rgba(0, 0, 0, 0.8);
-    margin-bottom: 0rem;
+    margin-bottom: 1rem;
   }
-
 </style>
 {% endblock %}
 {% block page %}
@@ -44,61 +43,84 @@
 <br><br><br>
 
 <div class="container mx-auto mt-2">
-  <div class="row">   
-  {% if not search %}
-    <center><h3>Search for Quizzes or Create One</h3></center>
+  <div class="row">
+    {% if not search %}
+    <center>
+      <h3>Search for Quizzes or Create One</h3>
+    </center>
     <hr>
-  {% else %}
-    <center><h3>Search Results for "{{ search }}"</h3></center>
+    <div class="row">
+      {% if user.is_authenticated %}
+      <br>
+      <a class="btn btn-warning" href="/quizcreate/">Create A Quiz</a>
+      <br>
+      <button class="btn"><a href="/logout/">Logout</a></button>
+      {% else %}
+      <br>
+      <button class="btn"><a href="/login/">Login</a></button>
+      <br>
+      <button class="btn"><a href="/register/">Create Account</a></button>
+      <br>
+      <a class="btn btn-warning" href="/quizcreate/">Create A Quiz</a>
+      {% endif %}
+    </div>
+    {% else %}
+    <center>
+      <h3>Search Results for "{{ search }}"</h3>
+    </center>
     <br>
     {% for quiz in quizsearch %}
     <div class="col-md-4">
       <div class="card" style="text-align: center; width: 21rem;"><strong>@{{ quiz.author }}</strong></div>
       <div class="card" style="width: 21rem;">
         <div class="card-body flex-row justify-content-between">
-        <h3 class="card-title" style="text-align: center;">{{ quiz.name }}</h3>
-        <br>
+          <h3 class="card-title" style="text-align: center;">{{ quiz.name }}</h3>
+          <br>
           <p>{{ quiz.descriptor }}</p>
           <p>Time Limit: {{ quiz.timelimit }} second(s)</p>
-        <br>
+          <br>
           <button data-bs-target="#exampleModal" data-bs-toggle="modal" data-time="{{quiz.timelimit}}"
             data-questions="{{quiz.questions}}" data-name="{{quiz.name}}" data-id="{{quiz.id}}" id="btn"
-            style="justify-content: center; margin: 0.15rem;" class="btn btn-md btn-success modal-button">Attempt Quiz</button>
-          <a class="btn btn-secondary btn-md" href="{% url 'quizfeed' quiz.pk %}">Feed <i class="bi bi-chat-dots"></i></a>
-        {% if user.is_superuser %}
-        <br>
-        {% csrf_token %}
+            style="justify-content: center; margin: 0.15rem;" class="btn btn-md btn-success modal-button">Attempt
+            Quiz</button>
+          <a class="btn btn-secondary btn-md" href="{% url 'quizfeed' quiz.pk %}">Feed <i
+              class="bi bi-chat-dots"></i></a>
+          {% if user.is_superuser %}
+          <br>
+          {% csrf_token %}
           <form method="POST">
             {% csrf_token %}
             <a class="btn btn-primary btn-sm" href="{% url 'quizedits' quiz.pk %}">Edit</a>
-            <button type="submit" class="btn btn-danger btn-sm" name ="quizdelete" value="{{ quiz.id }}">Delete</button>
+            <button type="submit" class="btn btn-danger btn-sm" name="quizdelete" value="{{ quiz.id }}">Delete</button>
           </form>
-        {% if user == quiz.author %}
-        <br>
-        {% csrf_token %}
+          {% if user == quiz.author %}
+          <br>
+          {% csrf_token %}
           <form method="POST">
             {% csrf_token %}
             <a class="btn btn-primary btn-sm" href="{% url 'quizedits' quiz.pk %}">Edit</a>
-            <button type="submit" class="btn btn-danger btn-sm" name ="quizdelete" value="{{ quiz.id }}">Delete</button>
+            <button type="submit" class="btn btn-danger btn-sm" name="quizdelete" value="{{ quiz.id }}">Delete</button>
           </form>
           {% endif %}
-        {% endif %}
+          {% endif %}
+        </div>
       </div>
+      <div class="card" style="text-align: center; width: 21rem;">
+        <form action="{% url 'quizlikes' quiz.pk %}" method="POST">{% csrf_token %}
+          {% if user.is_authenticated %}
+          <button class="btn btn-sm" type="submit" name="quizlikes" value="{{ quiz.id }} ">
+            <h3><i class="bi bi-hand-thumbs-up"></i><b>{{ quiz.total_likes }}</b></h3>
+          </button>
+          {% else %}
+          <h3><i class="bi bi-hand-thumbs-up"></i><b>{{ quiz.total_likes }}</b></h3></button>
+          {% endif %}
+        </form>
+      </div>
+      <br>
     </div>
-    <div class="card" style="text-align: center; width: 21rem;">
-      <form action="{% url 'quizlikes' quiz.pk %}" method="POST">{% csrf_token %}
-        {% if user.is_authenticated %}
-        <button class="btn btn-sm" type="submit" name="quizlikes" value="{{ quiz.id }} "><h3><i class="bi bi-hand-thumbs-up"></i><b>{{ quiz.total_likes }}</b></h3></button>
-        {% else %}
-        <h3><i class="bi bi-hand-thumbs-up"></i><b>{{ quiz.total_likes }}</b></h3></button>
-        {% endif %}
-      </form> 
-    </div>
-    <br>
-  </div>
-  {% empty %}
-  <p>No quizzes have been created? Click "Create A Quiz!"</p>
-  {% endfor %}
+    {% empty %}
+    <p>No quizzes have been created? Click "Create A Quiz!"</p>
+    {% endfor %}
   </div>
 </div>
 <hr>
@@ -116,9 +138,9 @@
     <button class="btn"><a href="/register/">Create Account</a></button>
     <br>
     <a class="btn btn-warning" href="/quizcreate/">Create A Quiz</a>
+    {% endif %}
   </div>
-  {% endif %}
-</div>  
+</div>
 {% endif %}
 {% endblock %}
 {% block js %}
