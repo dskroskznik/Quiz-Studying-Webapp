@@ -2,7 +2,7 @@
 ### QuizStudy helps in building quizzes to improve study habits while being shareable with everyone.
 ---
 ## Overview
-```php
+```py
 Welcome to the QuizStudy website! Uncover and key into various quiz topics to challenge your
  knowledge with, or develop and edit your quizzes on whatever topic you desire.
 Please encourage others to test their knowledge on these quizzes by sharing
@@ -20,6 +20,7 @@ The objective of this project is to apply accessibility through a safe
  authentication system, demonstrate CRUD program structures, and display
  user-to-data interaction through returns and retrievals.
 ```
+
 ## Contents
 - [Welcome To QuizStudy](#welcome-to-quizstudy)
 - [Documentations](#documentations)
@@ -53,7 +54,6 @@ The objective of this project is to apply accessibility through a safe
     - *Skip the step if logged in already* - Log in or Register to enable the website to track who creates quizzes.
     - The main information about the quiz time and topics will be available for input then.
     - Next, the editing of questions and their answers for the quiz takes place until satisfied. 
-  
 
 ## Documentations
 You can navigate these libraries/documentation for resources and guidance on technologies I used when building this website.
@@ -62,15 +62,39 @@ You can navigate these libraries/documentation for resources and guidance on tec
   - PostgreSQL: [postgresql.org/docs/16](https://www.postgresql.org/docs/16/index.html)
 
 ## Features
-1. ****
-   - f
-  
-## Screenshots 
-### Main display of active stock file selected and submitted to the form.
-![text](screenshots/Screenshot1.png)
+1. **Account Registering & Log In System**
+   - Users can create and manage their quizzes, ensuring the user's information and their quizzes are saved.
+   - Ensures users' data and quiz results are secured and accessible only to them.
+   - Admin users manage content and user activities, ensuring a well-maintained and orderly platform.
+2. **Dashboard Header Tabs (incl. Admin Tab)**
+   - Easily accessible to various addresses of QuizStudy, such as Registration, Create Quiz, and Profile Page, simplifying the experience.
+   - An Admin Tab, for admin logged-on, allows for managing users, users' details, monitoring quiz submissions, and ensuring the quality of data for platform integrity.
+   - Enables users to navigate to desired features and functions, with many ways of enhancing productivity.
+3. **Search Bar for Quizzes**
+   - Allows users to quickly find specific quizzes by entering keywords to filter by title.
+   - Improves the usability of the platform and locates relevant study materials by providing a direct way to access quizzes.
+4. **Active Timers with Calculated Results**
+   - Helps users develop better time management skills under pressure by how long they take to complete quizzes.
+   - Shows immediate testing performances, helping users identify areas for improvement.
+5. **Individual Quiz Feedback & Comments**
+   - Potential to help improve the quality and accuracy of their quizzes by receiving feedback from users.
+   - Encourages ongoing interactions and discussions on quiz topics, helping evolve the learning aspect of the platform.
 
-### Additionally available window for a comparison view of a candlestick chart and associative volumes.
-![text](screenshots/Screenshot2.png)
+## Screenshots 
+### 1
+![text](screenshots/SC1.png)
+
+### 2
+![text](screenshots/SC2.png)
+
+### 3
+![text](screenshots/SC3.png)
+
+### 4
+![text](screenshots/SC4.png)
+
+### 5
+![text](screenshots/SC5.png)
 
 ## License
 This project is licensed under the Standard Apache License - see the [LICENSE.md](LICENSE.md) file for details.
