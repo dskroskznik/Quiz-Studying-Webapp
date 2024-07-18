@@ -29,7 +29,7 @@ The objective of this project is to apply accessibility through a safe
 - [License](#license)
 
 ## Welcome To QuizStudy 
-*WEBSITE LINK IS DONE FOR VERSION TESTING*
+*WEBSITE LINK IS DOWN CURRENTLY FOR VERSION TESTING*
 
 1. **Navigate The QuizStudy Link**
 
@@ -61,6 +61,7 @@ The objective of this project is to apply accessibility through a safe
 You can navigate these libraries/documentation for resources and guidance on technologies I used when building this website.
   - Django: [learn.microsoft.com/dotnet](https://learn.microsoft.com/en-us/dotnet/)
   - JavaScript: [devdocs.io/javascript](https://devdocs.io/javascript/)
+  - jQuery: [w3schools.com/jQuery_intro.asp](https://www.w3schools.com/jquery/jquery_intro.asp)
   - PostgreSQL: [postgresql.org/docs/16](https://www.postgresql.org/docs/16/index.html)
 
 ## Features
@@ -84,25 +85,25 @@ You can navigate these libraries/documentation for resources and guidance on tec
 
 ## Screenshots 
 ### Main Home Page View
-![text](screenshots/home.png)
-![text](screenshots/startquiz.png)
+![1](screenshots/home.png)
+![2](screenshots/startquiz.png)
 
 ### Log In & Registration Form View
-![text](screenshots/login.png)
-![text](screenshots/reg.png)
+![3](screenshots/login.png)
+![4](screenshots/reg.png)
 
 ### Home Navigator with Admin Tab & Account Logout 
-![text](screenshots/nav.png)
+![5](screenshots/nav.png)
 
 ### Search View For Quiz Filtering
-![text](screenshots/searchresult.png)
-![text](screenshots/searchempty.png)
+![6](screenshots/searchresult.png)
+![7](screenshots/searchempty.png)
 
 ### Quiz Active View
-![text](screenshots/quizview.png)
+![8](screenshots/quizview.png)
 
 ### Quiz Feedback Comments Button
-![text](screenshots/feed.png)
+![9](screenshots/feed.png)
 
 ## License
 This project is licensed under the Standard Apache License - see the [LICENSE.md](LICENSE.md) file for details.
