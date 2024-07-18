@@ -84,25 +84,25 @@ You can navigate these libraries/documentation for resources and guidance on tec
 
 ## Screenshots 
 ### Main Home Page View
-![text](screenshots/home.png)
-![text](screenshots/startquiz.png)
+![1](screenshots/home.png)
+![2](screenshots/startquiz.png)
 
 ### Log In & Registration Form View
-![text](screenshots/login.png)
-![text](screenshots/reg.png)
+![3](screenshots/login.png)
+![4](screenshots/reg.png)
 
 ### Home Navigator with Admin Tab & Account Logout 
-![text](screenshots/nav.png)
+![5](screenshots/nav.png)
 
 ### Search View For Quiz Filtering
-![text](screenshots/searchresult.png)
-![text](screenshots/searchempty.png)
+![6](screenshots/searchresult.png)
+![7](screenshots/searchempty.png)
 
 ### Quiz Active View
-![text](screenshots/quizview.png)
+![8](screenshots/quizview.png)
 
 ### Quiz Feedback Comments Button
-![text](screenshots/feed.png)
+![9](screenshots/feed.png)
 
 ## License
 This project is licensed under the Standard Apache License - see the [LICENSE.md](LICENSE.md) file for details.
