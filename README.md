@@ -28,33 +28,20 @@ The objective of this project is to apply accessibility through a safe
 - [Screenshots](#screenshots)
 - [License](#license)
 
-<<<<<<< HEAD
 ## Welcome To QuizStudy 
 *WEBSITE LINK IS DONE FOR VERSION TESTING*
 
-=======
-## Welcome To QuizStudy
->>>>>>> 2c27645afd42e53dda28c41dc4d124adb446a1a6
 1. **Navigate The QuizStudy Link**
 
    Navigate to the repository details on the right-hand side to locate the website link available.
    
 
-<<<<<<< HEAD
 2. **Copy This And Paste To Go**
 
    Here is the URL link to the QuizStudy app in case of an alternative to accessing the website.
 
 
 3. **How To Start Taking Quizzes**
-=======
-3. **Copy This And Paste To Go**
-
-   Here is the URL link to the QuizStudy app in case of an alternative to accessing the website.
-   
-
-5. **How To Start Taking Quizzes**
->>>>>>> 2c27645afd42e53dda28c41dc4d124adb446a1a6
    On first view of the website, the steps to first taking quizzes are:
     - Navigate to a quiz of interest and select to take the quiz.
     - *Skip the step if logged in already* - Log in or Register to enable the website to track who is doing the quizzes.
@@ -64,11 +51,7 @@ The objective of this project is to apply accessibility through a safe
     -  Quizzes appearing based on the most recently created at the time.
     -  Utilizing the search bar, the quizzes filtered through from the search term will appear.
 
-<<<<<<< HEAD
 4. **How To Start Making Quizzes** 
-=======
-6. **How To Start Making Quizzes** 
->>>>>>> 2c27645afd42e53dda28c41dc4d124adb446a1a6
     - Navigate to "Create Quiz" atop the website header to continue with creating a quiz.
     - *Skip the step if logged in already* - Log in or Register to enable the website to track who creates quizzes.
     - The main information about the quiz time and topics will be available for input then.
@@ -100,7 +83,6 @@ You can navigate these libraries/documentation for resources and guidance on tec
    - Encourages ongoing interactions and discussions on quiz topics, helping evolve the learning aspect of the platform.
 
 ## Screenshots 
-<<<<<<< HEAD
 ### Main Home Page View
 ![text](screenshots/home.png)
 ![text](screenshots/startquiz.png)
@@ -121,22 +103,6 @@ You can navigate these libraries/documentation for resources and guidance on tec
 
 ### Quiz Feedback Comments Button
 ![text](screenshots/feed.png)
-=======
-### 1
-![text](screenshots/SC1.png)
-
-### 2
-![text](screenshots/SC2.png)
-
-### 3
-![text](screenshots/SC3.png)
-
-### 4
-![text](screenshots/SC4.png)
-
-### 5
-![text](screenshots/SC5.png)
->>>>>>> 2c27645afd42e53dda28c41dc4d124adb446a1a6
 
 ## License
 This project is licensed under the Standard Apache License - see the [LICENSE.md](LICENSE.md) file for details.
