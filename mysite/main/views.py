@@ -88,7 +88,7 @@ class QuizFeed(DetailView):
     model = QuizModel
     template_name = 'quizfeed.html'
     
-
+#   -- Dated Function Logic for posting question answers --    
 #class QuestionAnswers(LoginRequiredMixin, CreateView):
 #    model = AnswerModel
 #    form_class = AnswerForm
@@ -135,6 +135,7 @@ def quiz(req, i):
     quiz = QuizModel.objects.get(id=i)
     return render(req, 'quiz.html', {"quiz": quiz})
 
+#   -- Previous method before Classes to establishing quizzes form and data --
 #def quiz_comments(req, i):
     quizid = QuizModel.objects.get(id=i)
     form = QuizCommentForm(instance=quizid)

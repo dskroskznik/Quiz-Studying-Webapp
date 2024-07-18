@@ -3,6 +3,8 @@
 {% load crispy_forms_tags %}
 {% block page %}
 <br>
+  <h2 style="font: bold; color: #000000;">Log In</h2>
+<br>
   <form method="post">
     {% csrf_token %}
     {{form|crispy}}
