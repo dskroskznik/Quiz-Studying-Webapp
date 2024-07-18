@@ -1,4 +1,5 @@
-# Quiz-Study-WebApplication <img src="https://img.shields.io/github/stars/dskroskznik/Quiz-Studying-Webapp"/>
+# Quiz-Study-WebApplication 
+<img src="https://img.shields.io/github/stars/dskroskznik/Quiz-Studying-Webapp"/>
 ### QuizStudy helps in building quizzes to improve study habits while being shareable with everyone.
 ---
 ## Overview
