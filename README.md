@@ -61,6 +61,7 @@ The objective of this project is to apply accessibility through a safe
 You can navigate these libraries/documentation for resources and guidance on technologies I used when building this website.
   - Django: [learn.microsoft.com/dotnet](https://learn.microsoft.com/en-us/dotnet/)
   - JavaScript: [devdocs.io/javascript](https://devdocs.io/javascript/)
+  - jQuery: [w3schools.com/jQuery_intro.asp](https://www.w3schools.com/jquery/jquery_intro.asp)
   - PostgreSQL: [postgresql.org/docs/16](https://www.postgresql.org/docs/16/index.html)
 
 ## Features
