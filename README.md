@@ -91,7 +91,7 @@ You can navigate these libraries/documentation for resources and guidance on tec
 ![text](screenshots/login.png)
 ![text](screenshots/reg.png)
 
-### Home Navigator w/ Admin Tab & Account Logout 
+### Home Navigator with Admin Tab & Account Logout 
 ![text](screenshots/nav.png)
 
 ### Search View For Quiz Filtering
