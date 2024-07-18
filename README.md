@@ -29,7 +29,7 @@ The objective of this project is to apply accessibility through a safe
 - [License](#license)
 
 ## Welcome To QuizStudy 
-*WEBSITE LINK IS DONE FOR VERSION TESTING*
+*WEBSITE LINK IS DOWN CURRENTLY FOR VERSION TESTING*
 
 1. **Navigate The QuizStudy Link**
 
