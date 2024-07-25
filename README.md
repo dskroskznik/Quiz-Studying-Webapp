@@ -102,7 +102,7 @@ You can navigate these libraries/documentation for resources and guidance on tec
 ### Quiz Active View
 ![8](screenshots/quizview.png)
 
-### Quiz Feedback Comments Button
+### Quiz Feedback & Comments 
 ![9](screenshots/feed.png)
 
 ## License
